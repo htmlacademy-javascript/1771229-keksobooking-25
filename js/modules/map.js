@@ -1,6 +1,6 @@
 import {setAddressFromLatLng} from './interaction-with-form.js';
 import { createOfferLayout } from './generate-layout.js';
-import { isOfferSuitable } from './map-filters.js';
+//import { isOfferSuitable } from './map-filters.js';
 import {enablePage} from './enable-disable-page.js';
 
 const DEFAULT_LAT = 35.68001;
@@ -97,11 +97,11 @@ const createMarker = (offerSummary) => {
 };
 
 
-const updatePins = (data) =>{
+const updatePins = (data, cb) =>{
   markerGroup.clearLayers();
   let suitableOffersAmount=0;
   for (const offer of data) {
-    if(isOfferSuitable(offer)){
+    if(cb(offer)){
       createMarker(offer);
       suitableOffersAmount++;
     }
