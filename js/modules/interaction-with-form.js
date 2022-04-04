@@ -1,7 +1,7 @@
 import {getData, sendData} from './server-interfaces.js';
 import { roundTheNumber } from './mathematical.js';
 import { createSuccessPopup,  createErrorPopup} from './form-submit-messages.js';
-import { resetMap} from './map.js';
+import { resetMap, updatePins} from './map.js';
 const LOCATION_DIGITS_IN_ADDRESS = 5;
 const adFormElement=document.querySelector('.ad-form');
 const MinPriceForType = {
@@ -91,7 +91,7 @@ const clearFiltersAndForm = () => {
   filtersElement.reset();
   resetMap();
   priceElement.placeholder =  MinPriceForType.flat;
-  getData();
+  getData(updatePins);
 };
 
 adFormReset.addEventListener('click', clearFiltersAndForm);
