@@ -27,16 +27,16 @@ const  createSuccessPopup = () =>{
   mapFiltersElement.reset();
 
   window.addEventListener('keydown', (evt) => escOnSubmitMessageHandler(evt));
-  submitMessageElement.addEventListener('click', clickOnSubmitMessageHandler());
+  submitMessageElement.addEventListener('click', clickOnSubmitMessageHandler);
 };
 
 const  createErrorPopup = () =>{
   submitMessageElement = document.querySelector('#error').content.cloneNode(true);
   bodyElement.appendChild(submitMessageElement);
   window.addEventListener('keydown', (evt) => escOnSubmitMessageHandler(evt));
-  submitMessageElement.addEventListener('click', clickOnSubmitMessageHandler());
+  submitMessageElement.addEventListener('click', clickOnSubmitMessageHandler);
   const closeButton = submitMessageElement.querySelector('.error__button');
-  closeButton.addEventListener('click', buttonOnSubmitMessageHandler());
+  closeButton.addEventListener('click', buttonOnSubmitMessageHandler);
 
 };
 
