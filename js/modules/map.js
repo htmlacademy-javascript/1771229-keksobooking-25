@@ -119,6 +119,7 @@ const resetMap = () =>
   createMainMarker();
 };
 export {
+  map,
   updatePins,
   resetMap
 };
