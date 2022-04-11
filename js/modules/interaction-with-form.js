@@ -112,6 +112,7 @@ const setUserFormSubmit = () => {
 export {
   setAddressFromLatLng,
   validateOffer,
-  setUserFormSubmit
+  setUserFormSubmit,
+  clearFiltersAndForm
 };
 
