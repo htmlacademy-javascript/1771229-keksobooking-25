@@ -10,6 +10,7 @@ const removeOnSubmitMessage = (isSuccessful) =>{
   }
   else if (!isSuccessful){
     submitMessageElement = bodyElement.querySelector('.error');
+    removeOnSubmitErrorMessageHandler();
   }
   submitMessageElement.remove();
 };
