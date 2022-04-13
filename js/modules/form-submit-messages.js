@@ -4,53 +4,53 @@ const adFormElement=document.querySelector('.ad-form');
 const bodyElement = document.querySelector('body');
 const mapFiltersElement=document.querySelector('.map__filters');
 
-const removeOnSubmitMessage = (isSuccessful) =>{
+const removeOnSubmitMessage = (evt, isSuccessful) =>{
   let submitMessageElement;
   if (isSuccessful){
     submitMessageElement = bodyElement.querySelector('.success');
-    removeOnSubmitSuccessMessageHandler();
-  }
-  if (!isSuccessful){
+    removeOnSubmitSuccessMessage();
+  } else {
     submitMessageElement = bodyElement.querySelector('.error');
-    removeOnSubmitErrorMessageHandler();
+    removeOnSubmitErrorMessage(evt);
   }
   submitMessageElement.remove();
 };
 
-const clickOnSubmitSuccessMessageHandler = () =>{
-  removeOnSubmitMessage(true);
+const clickOnSubmitSuccessMessage = (evt) =>{
+  removeOnSubmitMessage(evt, true);
 };
-const keyOnSubmitSuccessMessageHandler = (evt) =>{
+const keyOnSubmitSuccessMessage = (evt) =>{
   if (evt.key === CANCEL_SUBMIT_MESSAGE_KEY) {
-    removeOnSubmitMessage(true);
+    removeOnSubmitMessage(evt, true);
   }
 };
 
-const keyOnSubmitErrorMessageHandler = (evt) =>{
+const keyOnSubmitErrorMessage = (evt) =>{
   if (evt.key === CANCEL_SUBMIT_MESSAGE_KEY) {
-    removeOnSubmitMessage(false);
+    removeOnSubmitMessage(evt, false);
   }
 };
 
-const clickOnSubmitErrorMessageHandler = () =>{
-  removeOnSubmitMessage(false);
+const clickOnSubmitErrorMessage = (evt) =>{
+  removeOnSubmitMessage(evt, false);
 };
-
-const buttonOnSubmitErrorMessageHandler = () =>{
-  removeOnSubmitMessage(false);
+const buttonOnSubmitErrorMessage = (evt) =>{
+  evt.stopPropagation();
+  removeOnSubmitMessage(evt, false);
 };
 
 
 //popupcreators
 const  createSuccessPopup = () =>{
   adFormElement.reset();
+  // TEST \/
   clearFiltersAndForm();
   const submitMessageElement = document.querySelector('#success').content.cloneNode(true);
   bodyElement.appendChild(submitMessageElement);
   mapFiltersElement.reset();
 
-  window.addEventListener('keydown', keyOnSubmitSuccessMessageHandler);
-  window.addEventListener('click', clickOnSubmitSuccessMessageHandler);
+  window.addEventListener('keydown', keyOnSubmitSuccessMessage);
+  window.addEventListener('click', clickOnSubmitSuccessMessage);
 };
 
 
@@ -59,23 +59,25 @@ const  createErrorPopup = () =>{
   const closeButton = submitMessageElement.querySelector('.error__button');
   bodyElement.appendChild(submitMessageElement);
 
-  window.addEventListener('keydown', (evt) => keyOnSubmitErrorMessageHandler(evt));
-  window.addEventListener('click', clickOnSubmitErrorMessageHandler);
-  closeButton.addEventListener('click', buttonOnSubmitErrorMessageHandler);
+  window.addEventListener('keydown', keyOnSubmitErrorMessage);
+  window.addEventListener('click', clickOnSubmitErrorMessage);
+  closeButton.addEventListener('click', buttonOnSubmitErrorMessage);
 
 };
 
-const removeOnSubmitSuccessMessageHandler = () => {
-  window.removeEventListener('keydown', (evt) => keyOnSubmitSuccessMessageHandler(evt));
-  window.removeEventListener('click', clickOnSubmitSuccessMessageHandler);
+const removeOnSubmitSuccessMessage = () => {
+  window.removeEventListener('keydown', keyOnSubmitSuccessMessage);
+  window.removeEventListener('click', clickOnSubmitSuccessMessage);
 };
 
-const removeOnSubmitErrorMessageHandler = () => {
+const removeOnSubmitErrorMessage = () => {
   const submitMessageElement = document.querySelector('.error');
   const closeButton = submitMessageElement.querySelector('.error__button');
-  window.removeEventListener('keydown', keyOnSubmitErrorMessageHandler);
-  submitMessageElement.removeEventListener('click', clickOnSubmitErrorMessageHandler);
-  closeButton.removeEventListener('click', buttonOnSubmitErrorMessageHandler);
+
+  window.removeEventListener('keydown', keyOnSubmitErrorMessage);
+  window.removeEventListener('click', clickOnSubmitErrorMessage);
+  closeButton.removeEventListener('click', buttonOnSubmitErrorMessage);
+
 };
 
 export { createSuccessPopup,  createErrorPopup};
