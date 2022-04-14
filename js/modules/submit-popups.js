@@ -13,7 +13,7 @@ const removePopup = (evt, isSuccessful) =>{
   } else {
     submitMessageElement = bodyElement.querySelector('.error');
     // eslint-disable-next-line no-use-before-define
-    removeOnSubmitErrorMessage();
+    removeErrorPopupListeners();
   }
   submitMessageElement.remove();
 };
@@ -71,7 +71,7 @@ const removeSuccessPopupListeners = () => {
   window.removeEventListener('click', clickOnSuccess);
 };
 
-const removeOnSubmitErrorMessage = () => {
+const removeErrorPopupListeners = () => {
   const submitMessageElement = document.querySelector('.error');
   const closeButton = submitMessageElement.querySelector('.error__button');
 
