@@ -1,10 +1,11 @@
 import {setAddressFromLatLng} from './interaction-with-form.js';
 import { createOfferLayout } from './generate-layout.js';
-//import { isOfferSuitable } from './map-filters.js';
-import {enablePage} from './enable-disable-page.js';
+
+import {enablePage} from './toggle-page.js';
 
 const DEFAULT_LAT = 35.68001;
 const DEFAULT_LNG = 139.77001;
+
 const DEFAULT_SCALE = 13;
 const MARKERS_AMOUNT = 10;
 const SELECTOR_SIZE = 52;
@@ -96,8 +97,8 @@ const createMarker = (offerSummary) => {
     .bindPopup(createOfferLayout(offerSummary));
 };
 
+const updatePins = (cb, data) =>{
 
-const updatePins = (data, cb) =>{
   markerGroup.clearLayers();
   let suitableOffersAmount=0;
   for (const offer of data) {
@@ -122,7 +123,8 @@ const resetMap = () =>
 export {
   map,
   updatePins,
-  resetMap,
-  setDefaultAddress
+
+  resetMap
+
 };
 

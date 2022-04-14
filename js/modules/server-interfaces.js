@@ -1,4 +1,5 @@
-import { isOfferSuitable } from './map-filters.js';
+
+import {isOfferSuitable } from './map-filters.js';
 
 const GET_DATA_FROM='https://24.javascript.pages.academy/keksobooking/data';
 const SEND_DATA_TO='https://24.javascript.pages.academy/keksobooking';
@@ -25,7 +26,9 @@ const getData = (cb) => {
     })
     .then((response) => response.json())
     .then((offers) => {
-      cb(offers, isOfferSuitable);
+
+      cb(isOfferSuitable, offers);
+
     });
 };
 
