@@ -97,8 +97,6 @@ const createMarker = (offerSummary) => {
     .bindPopup(createOfferLayout(offerSummary));
 };
 
-
-
 const updatePins = (cb, data) =>{
 
   markerGroup.clearLayers();
