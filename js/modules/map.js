@@ -1,6 +1,6 @@
 import {setAddressFromLatLng} from './interaction-with-form.js';
 import { createOfferLayout } from './generate-layout.js';
-import {enablePage} from './enable-disable-page.js';
+import {enablePage} from './toggle-page.js';
 
 const DEFAULT_LAT = 35.68;
 const DEFAULT_LNG = 139.77;

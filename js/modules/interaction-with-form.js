@@ -1,6 +1,6 @@
 import {getData, sendData} from './server-interfaces.js';
 import { roundTheNumber } from './mathematical.js';
-import { createSuccessPopup,  createErrorPopup} from './form-submit-messages.js';
+import { createSuccessPopup,  createErrorPopup} from './submit-popups.js';
 import { resetMap, updatePins} from './map.js';
 const LOCATION_DIGITS_IN_ADDRESS = 5;
 const adFormElement=document.querySelector('.ad-form');
