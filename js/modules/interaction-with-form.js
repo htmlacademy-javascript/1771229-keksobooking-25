@@ -1,6 +1,8 @@
 import {getData, sendData} from './server-interfaces.js';
 import { roundTheNumber } from './mathematical.js';
+
 import { createSuccessPopup,  createErrorPopup} from './submit-popups.js';
+
 import { resetMap, updatePins} from './map.js';
 const LOCATION_DIGITS_IN_ADDRESS = 5;
 const adFormElement=document.querySelector('.ad-form');
@@ -35,6 +37,7 @@ const setAddressFromLatLng = (lat, lng) => {
   setAddress(`${roundTheNumber(lat, LOCATION_DIGITS_IN_ADDRESS)  }, ${  roundTheNumber(lng, LOCATION_DIGITS_IN_ADDRESS)}`);
 };
 
+
 const setCapacityForRooms = (theRoomAmount, theCapacity)=>{
   if (theRoomAmount.value==='100'){
     theCapacity.value = '0';
@@ -43,6 +46,7 @@ const setCapacityForRooms = (theRoomAmount, theCapacity)=>{
     theCapacity.value = '1';
   }
   for (const option of theCapacity.children){
+
     option.disabled = true;
     for (const possibleCapacity of CapacityForRooms[theRoomAmount.value]){
       if ((option.value - possibleCapacity) === 0){
@@ -55,6 +59,7 @@ const setCapacityForRooms = (theRoomAmount, theCapacity)=>{
 
 const setEqualTime = (userSetTime, syncTime) => {
   for (const childElement of syncTime.children)
+
   {
     childElement.selected = false;
     if (childElement.value === userSetTime.value)
