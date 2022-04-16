@@ -18,7 +18,6 @@ const CapacityForRooms = {
   100: [0],
 };
 
-
 const roomAmountElement = adFormElement.querySelector('#room_number');
 const capacityElement   = adFormElement.querySelector('#capacity');
 const typeElement       = adFormElement.querySelector('#type');
@@ -52,13 +51,10 @@ const setCapacityForRooms = (theRoomAmount, theCapacity)=>{
   }
 };
 
-
 const setEqualTime = (userSetTime, syncTime) => {
-  for (const childElement of syncTime.children)
-  {
+  for (const childElement of syncTime.children) {
     childElement.selected = false;
-    if (childElement.value === userSetTime.value)
-    {
+    if (childElement.value === userSetTime.value) {
       childElement.selected=true;
     }
   }
@@ -68,7 +64,6 @@ const setPriceForType = (theType, thePrice) => { // Заменяет placeholder
   thePrice.placeholder=MinPriceForType[theType.value];
   thePrice.min=MinPriceForType[theType.value];
 };
-
 
 const validateOffer = () => {
   checkinElement.addEventListener('input', () => {
@@ -85,7 +80,6 @@ const validateOffer = () => {
   });
 };
 
-
 const filtersElement = document.querySelector('.map__filters');
 const clearFiltersAndForm = () => {
   filtersElement.reset();
@@ -95,7 +89,6 @@ const clearFiltersAndForm = () => {
 };
 
 adFormReset.addEventListener('click', clearFiltersAndForm);
-
 
 const setUserFormSubmit = () => {
   adFormElement.addEventListener('submit', (evt) => {
@@ -107,7 +100,6 @@ const setUserFormSubmit = () => {
     );
   });
 };
-
 
 export {
   setAddressFromLatLng,
