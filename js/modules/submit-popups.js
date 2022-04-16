@@ -4,7 +4,7 @@ const adFormElement=document.querySelector('.ad-form');
 const bodyElement = document.querySelector('body');
 const mapFiltersElement=document.querySelector('.map__filters');
 
-const removePopup = (evt, isSuccessful) =>{
+const removePopup = (isSuccessful) =>{
   let submitMessageElement;
   if (isSuccessful){
     submitMessageElement = bodyElement.querySelector('.success');
@@ -18,29 +18,28 @@ const removePopup = (evt, isSuccessful) =>{
   submitMessageElement.remove();
 };
 
-const clickOnSuccess = (evt) =>{
-  removePopup(evt, true);
+const clickOnSuccess = () =>{
+  removePopup(true);
 };
 const keyOnSuccess = (evt) =>{
   if (evt.key === CANCEL_SUBMIT_MESSAGE_KEY) {
-    removePopup(evt, true);
+    removePopup(true);
   }
 };
 
 const keyOnError = (evt) =>{
   if (evt.key === CANCEL_SUBMIT_MESSAGE_KEY) {
-    removePopup(evt, false);
+    removePopup(false);
   }
 };
 
-const clickOnError = (evt) =>{
-  removePopup(evt, false);
+const clickOnError = () =>{
+  removePopup(false);
 };
 const buttonClickOnError = (evt) =>{
   evt.stopPropagation();
-  removePopup(evt, false);
+  removePopup(false);
 };
-
 
 //popupcreators
 const  createSuccessPopup = () =>{
@@ -53,7 +52,6 @@ const  createSuccessPopup = () =>{
   window.addEventListener('keydown', keyOnSuccess);
   window.addEventListener('click', clickOnSuccess);
 };
-
 
 const  createErrorPopup = () =>{
   const submitMessageElement = document.querySelector('#error').content.cloneNode(true);

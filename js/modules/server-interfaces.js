@@ -1,4 +1,3 @@
-
 import {isOfferSuitable } from './map-filters.js';
 const GET_DATA_FROM='https://24.javascript.pages.academy/keksobooking/data';
 const SEND_DATA_TO='https://24.javascript.pages.academy/keksobooking';
@@ -30,13 +29,11 @@ const getData = (cb) => {
 };
 
 const sendData = (onSuccess, onFail, body) => {
-  fetch(SEND_DATA_TO
-    ,
-    {
-      method: 'POST',
-      type: 'multipart/form-data',
-      body,
-    },
+  fetch(SEND_DATA_TO, {
+    method: 'POST',
+    type: 'multipart/form-data',
+    body,
+  },
   )
     .then((response) => {
       if (response.ok) {
