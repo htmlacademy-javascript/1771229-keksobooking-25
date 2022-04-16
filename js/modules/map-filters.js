@@ -5,7 +5,6 @@ const LOW_PRICE_FILTER = 10000;
 const HIGH_PRICE_FILTER = 50000;
 const RENDER_DELAY = 500;
 
-
 const filtersElement = document.querySelector('.map__filters');
 const typeFilterElement = filtersElement.querySelector('#housing-type');
 const priceFilterElement = filtersElement.querySelector('#housing-price');
@@ -20,7 +19,6 @@ const isPriceSuitable = (offerSummary) =>
 (priceFilterElement.value === 'low' && offerSummary.offer.price <=LOW_PRICE_FILTER) ||
 (priceFilterElement.value === 'high' && offerSummary.offer.price >=HIGH_PRICE_FILTER)||
 (priceFilterElement.value === 'middle' && (offerSummary.offer.price >=LOW_PRICE_FILTER) && (offerSummary.offer.price <= HIGH_PRICE_FILTER));
-
 
 const createFilterFeaturesList = () =>
 {
@@ -50,7 +48,6 @@ const areFeaturesSuitable = (offerFeatures) =>
   }
   return true;
 };
-
 
 const isOfferSuitable = (offerSummary) =>(( isRoomsSuitable(offerSummary))&&
 (isTypeSuitable(offerSummary))&&

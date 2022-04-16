@@ -23,17 +23,14 @@ const map = L.map('map-canvas').on('load', () => {
 
 
 L.tileLayer(
-  TILE_LAYER,
-  {
+  TILE_LAYER, {
     attribution: TILE_LAYER_ATTR,
   },
 ).addTo(map);
 
-
 const markerGroup = L.layerGroup().addTo(map);
 const selectLayer = L.layerGroup().addTo(map);
 const setDefaultAddress = () =>  setAddressFromLatLng(DEFAULT_LAT, DEFAULT_LNG);
-
 
 const createMainMarker = () => {
   selectLayer.clearLayers();
@@ -46,29 +43,23 @@ const createMainMarker = () => {
     iconAnchor: [(SELECTOR_SIZE/2), SELECTOR_SIZE],
   });
 
-  const marker = L.marker(
-    {
-      lat,
-      lng,
-    },
-    {
-      draggable: true,
-      icon,
-    },
+  const marker = L.marker( {
+    lat,
+    lng,
+  },{
+    draggable: true,
+    icon,
+  },
   );
 
   marker
     .addTo(selectLayer);
 
-
-  marker.addEventListener('moveend', (evt) =>
-  {
+  marker.addEventListener('moveend', (evt) => {
     setAddressFromLatLng(evt.target._latlng.lat, evt.target._latlng.lng);
   },
   );
-
 };
-
 
 const createMarker = (offerSummary) => {
   const lat = offerSummary.location.lat;
@@ -80,21 +71,19 @@ const createMarker = (offerSummary) => {
     iconAnchor: [(ICON_SIZE/2), ICON_SIZE],
   });
 
-  const marker = L.marker(
-    {
-      lat,
-      lng,
-    },
-    {
-      icon,
-    },
+  const marker = L.marker({
+    lat,
+    lng,
+  },
+  {
+    icon,
+  },
   );
 
   marker
     .addTo(markerGroup)
     .bindPopup(createOfferLayout(offerSummary));
 };
-
 
 const updatePins = (cb, data) =>{
   markerGroup.clearLayers();
@@ -109,9 +98,8 @@ const updatePins = (cb, data) =>{
     }
   }
 };
-const resetMap = () =>
-{
 
+const resetMap = () =>{
   map.setView({
     lat: DEFAULT_LAT,
     lng: DEFAULT_LNG,

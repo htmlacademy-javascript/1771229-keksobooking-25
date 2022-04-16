@@ -14,7 +14,6 @@ const disablePage = () => {
   }
 };
 
-
 const enablePage = () => {
   adFormElement.classList.remove('ad-form--disabled');
   mapFiltersElement.classList.remove('map__filters--disabled');

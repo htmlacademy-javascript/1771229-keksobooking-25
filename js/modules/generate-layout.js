@@ -9,8 +9,9 @@ const cardElement = document.querySelector('#card').content;
 
 const removeEmptyElements = (removeFrom) => {
   for (const element in removeFrom){
-    if (element==='')
-    {removeFrom[element].classList.add('hidden');}
+    if (element===''){
+      removeFrom[element].classList.add('hidden');
+    }
   }
 };
 
@@ -28,6 +29,7 @@ const createOfferLayout = (offerSummary) => {
     photos: cardCloneElement.querySelector('.popup__photos'),
     avatar: cardCloneElement.querySelector('.popup__avatar'),
   };
+
   const addFeatures = (featuresToAdd) =>{
     popup.features.innerHTML = '';
     if (!(featuresToAdd===undefined)) {
@@ -36,6 +38,7 @@ const createOfferLayout = (offerSummary) => {
       }
     }
   };
+
   const addPhotos = (photosToAdd) => {
     popup.photos.innerHTML='';
     if (!(photosToAdd===undefined)) {
@@ -46,6 +49,7 @@ const createOfferLayout = (offerSummary) => {
       }
     }
   };
+
   popup.title.textContent = offerSummary.offer.title;
   popup.address.textContent = offerSummary.offer.address;
   popup.price.textContent = (`${offerSummary.offer.price  } ₽/ночь`);
@@ -60,7 +64,6 @@ const createOfferLayout = (offerSummary) => {
   removeEmptyElements(cardCloneElement);
   return cardCloneElement.firstElementChild;
 };
-
 
 export {
   createOfferLayout
