@@ -13,7 +13,7 @@ const createGetDataError = () => {
   errorMessageElement.style.padding = '30px';
   document.body.insertBefore(errorMessageElement, document.body.firstChild);
 };
-
+let recievedOffers;
 const getData = (cb) => {
   fetch(GET_DATA_FROM)
     .then((response) => {
@@ -25,6 +25,7 @@ const getData = (cb) => {
     .then((response) => response.json())
     .then((offers) => {
       cb(isOfferSuitable, offers);
+      recievedOffers = offers;
     });
 };
 
@@ -49,5 +50,6 @@ const sendData = (onSuccess, onFail, body) => {
 
 export {
   getData,
-  sendData
+  sendData,
+  recievedOffers
 };

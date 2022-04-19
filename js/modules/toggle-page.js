@@ -6,11 +6,11 @@ const disablePage = () => {
   mapFiltersElement.classList.add('map__filters--disabled');
 
   for (const childElement of adFormElement.children){
-    childElement.setAttribute('disabled', true);
+    childElement.setAttribute('disabled', 'true');
   }
 
   for (const childElement of mapFiltersElement.children){
-    childElement.setAttribute('disabled', true);
+    childElement.setAttribute('disabled', 'true');
   }
 };
 
