@@ -1,5 +1,5 @@
 import { updatePins } from './map.js';
-import { getData } from './server-interfaces.js';
+import { recievedOffers } from './server-interfaces.js';
 
 const LOW_PRICE_FILTER = 10000;
 const HIGH_PRICE_FILTER = 50000;
@@ -55,7 +55,7 @@ const isOfferSuitable = (offerSummary) =>(( isRoomsSuitable(offerSummary))&&
 (isPriceSuitable(offerSummary))
 &&(areFeaturesSuitable(offerSummary.offer.features))
 );
-filtersElement.addEventListener('input', (_.debounce(() => getData(updatePins), RENDER_DELAY)));
+filtersElement.addEventListener('input', (_.debounce(() => updatePins(isOfferSuitable, recievedOffers), RENDER_DELAY)));
 
 export {
   isOfferSuitable
