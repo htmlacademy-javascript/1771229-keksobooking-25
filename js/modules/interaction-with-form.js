@@ -1,7 +1,8 @@
-import {getData, sendData} from './server-interfaces.js';
+import {sendData, recievedOffers} from './server-interfaces.js';
 import { roundTheNumber } from './mathematical.js';
 import { createSuccessPopup,  createErrorPopup} from './submit-popups.js';
 import { resetMap, updatePins} from './map.js';
+import { isOfferSuitable } from './map-filters.js';
 const LOCATION_DIGITS_IN_ADDRESS = 5;
 const adFormElement=document.querySelector('.ad-form');
 const MinPriceForType = {
@@ -53,10 +54,7 @@ const setCapacityForRooms = (theRoomAmount, theCapacity)=>{
 
 const setEqualTime = (userSetTime, syncTime) => {
   for (const childElement of syncTime.children) {
-    childElement.selected = false;
-    if (childElement.value === userSetTime.value) {
-      childElement.selected=true;
-    }
+    childElement.selected = childElement.value === userSetTime.value;
   }
 };
 
@@ -80,12 +78,17 @@ const validateOffer = () => {
   });
 };
 
-const filtersElement = document.querySelector('.map__filters');
 const clearFiltersAndForm = () => {
+  const filtersElement = document.querySelector('.map__filters');
+  adFormElement.reset();
   filtersElement.reset();
   resetMap();
   priceElement.placeholder =  MinPriceForType.flat;
-  getData(updatePins);
+  updatePins(isOfferSuitable, recievedOffers);
+  const photoPreviewContainer = document.querySelector('.ad-form__photo');
+  photoPreviewContainer.innerHTML='';
+  const avatarPreview = document.querySelector('.ad-form-header__preview').querySelector('img');
+  avatarPreview.src='img/muffin-grey.svg';
 };
 
 adFormReset.addEventListener('click', clearFiltersAndForm);

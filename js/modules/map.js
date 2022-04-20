@@ -105,6 +105,7 @@ const resetMap = () =>{
     lng: DEFAULT_LNG,
   }, DEFAULT_SCALE);
   createMainMarker();
+  setDefaultAddress();
 };
 export {
   map,
