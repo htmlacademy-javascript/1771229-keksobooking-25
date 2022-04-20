@@ -9,7 +9,7 @@ const photoChooser = document.querySelector('#images');
 const photoPreviewContainer = document.querySelector('.ad-form__photo');
 
 
-const handleImageUpload = () => {
+const setImageListeners = () => {
   avatarChooser.addEventListener('change', () => {
     const file = avatarChooser.files[0];
     const fileName = file.name.toLowerCase();
@@ -38,4 +38,4 @@ const handleImageUpload = () => {
   });
 };
 
-export {handleImageUpload};
+export {setImageListeners};
