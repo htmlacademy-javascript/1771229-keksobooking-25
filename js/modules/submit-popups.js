@@ -44,8 +44,6 @@ const buttonClickOnError = (evt) =>{
 //popupcreators
 const  createSuccessPopup = () =>{
   adFormElement.reset();
-  const photoPreviewContainer = document.querySelector('.ad-form__photo');
-  photoPreviewContainer.innerHTML='';
   clearFiltersAndForm();
   const submitMessageElement = document.querySelector('#success').content.cloneNode(true);
   bodyElement.appendChild(submitMessageElement);

@@ -85,6 +85,8 @@ const clearFiltersAndForm = () => {
   resetMap();
   priceElement.placeholder =  MinPriceForType.flat;
   updatePins(isOfferSuitable, recievedOffers);
+  const photoPreviewContainer = document.querySelector('.ad-form__photo');
+  photoPreviewContainer.innerHTML='';
 };
 
 adFormReset.addEventListener('click', clearFiltersAndForm);
