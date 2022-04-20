@@ -87,6 +87,8 @@ const clearFiltersAndForm = () => {
   updatePins(isOfferSuitable, recievedOffers);
   const photoPreviewContainer = document.querySelector('.ad-form__photo');
   photoPreviewContainer.innerHTML='';
+  const avatarPreview = document.querySelector('.ad-form-header__preview').querySelector('img');
+  avatarPreview.src='img/muffin-grey.svg';
 };
 
 adFormReset.addEventListener('click', clearFiltersAndForm);
